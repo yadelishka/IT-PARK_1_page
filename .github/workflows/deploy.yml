@@ -24,3 +24,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./ # Укажите папку с собранным сайтом (например, 'dist' если используете сборщик)
           publish_branch: gh-pages # Или другой branch, который использует GitHub Pages
+          force_orphan: true
