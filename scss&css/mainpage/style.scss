@@ -1,0 +1,1236 @@
+@import "../nullstyle.scss";
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+
+
+html,body {
+  height: 100%;
+  font-size: 16px;
+  font-family: "Play", sans-serif;
+  background-color: #1F1A17;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 0 auto;
+  font-size: 1rem;
+  width: 100%;
+}
+
+//Navigation
+.navigation{
+  background-color: transparent;
+  margin: 1rem auto;
+  height: 6rem;
+  position: relative;
+  width: 72.5rem;
+  z-index: 2;
+  &__container{
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: end;
+  }
+}
+.header{
+  display: flex;
+  position: relative;
+  z-index: 3;
+}
+
+ul.navbar-navig{
+  margin-left: 5rem;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+}
+
+li.navbar-item{
+  margin-right: 1.2rem;
+  padding-bottom: 0.1rem;
+  &:hover{
+    background: linear-gradient(90deg, #50E4DB 0%, #00549F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 0.1rem solid;
+    border-image-source: linear-gradient(90deg, #50E4DB 0%, #00549F 100%);
+    border-image-slice: 1;
+  }
+}
+
+.navigation-collapse{
+  flex: 0 1 auto;
+  display: flex;
+}
+
+a.navbar-link{
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+button.socialbutton{
+  background-color: #1F1A17;
+  border-radius: 15%;
+  padding: 0.2rem;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  &:hover{
+    background: linear-gradient(90deg, #50E4DB 0%, #00549F 100%);
+  }
+}
+
+button.headerbtn{
+  margin-left: 1.5rem;
+}
+
+.socialbutton::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  background: linear-gradient(90deg, #50E4DB 0%, #00549F 100%);
+  border-radius: 15%;
+  z-index: -1;
+}
+
+.open{
+  display: flex !important;
+}
+
+.burger{
+  border: solid 2px transparent;
+  border-radius: 0.5rem;
+  background-image: linear-gradient(#1F1A17, #1F1A17), 
+  linear-gradient(90deg, #50E4DB 0%, #00549F 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: none;
+  position: relative;
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+  width: 2.7rem;
+  height: 2.7rem;
+}
+
+.burger span{
+  height: 2px;
+  border-radius: 0.2rem;
+  width: 40%;
+  transform: scale(1);
+  background-color: #FAF6F2;
+  margin: 0 auto;
+}
+
+.burger::before, .burger::after{
+  content: '';
+  position: absolute;
+  border-radius: 0.2rem;
+  height: 2px;
+  background-color: #FAF6F2;
+  transition: all 0.3s ease 0s;
+}
+
+.burger::before { top: 0.85rem; width: 60%; height: 2px; }
+
+.burger::after { bottom: 0.8rem; width: 20%; height: 2px; }
+
+
+/* Добавляем класс active для анимации иконки бургера */
+.burger.active span { transform: scale(0) }
+
+.burger.active::before{
+  width: 60%;
+  top: 50%;
+  transform: rotate(-45deg) translate(0, -50%);
+}
+
+.burger.active::after{
+  bottom: 50%;
+  width: 60%;
+  transform: rotate(45deg) translate(0, 50%);
+}
+
+.burger.active{
+  background-image: linear-gradient(#2B2B2B, #2B2B2B), 
+  linear-gradient(90deg, #50E4DB 0%, #00549F 100%);
+}
+
+/* При разрешении экрана 390px и ниже, выводим на экран иконку бургера */
+@media (max-width: 391px) {
+  .brand-navigation{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+  }
+  .burger { 
+    display: flex; 
+    flex: 1 0 auto;
+    margin: 1rem;
+   }
+
+  .navigation{
+    margin: 0;
+  }
+
+  .navigation-collapse{
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 0; bottom: 0; left: 0; right: 0;
+      z-index: 50;
+      overflow-y: auto;
+      padding: 5rem 0.5rem;
+      background-color: #2B2B2B;
+      animation: burgerAnimation 0.4s;
+  }
+
+  .navigation-collapse ul{
+    position: absolute;
+    left: 0;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: start;
+    margin-left: 2rem;
+  }
+
+  a.navbar-link{font-size: 1.5rem;}
+
+  button.headerbtn{
+    margin: 1rem 1rem 0 0;
+    background-color: #2B2B2B;
+  }
+}
+
+@keyframes burgerAnimation {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+
+//Подвал
+footer{
+  background-color: #1F1A17;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFFFFF;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+  flex: 1 1 auto;
+  max-width: 72.5rem;
+}
+
+.footer{
+  position: relative;
+  margin-bottom: 10rem;
+  &__info{
+    max-width: 72.5rem;
+    display: flex;
+    padding: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+  &__info-column{
+    flex: 1 0 auto;
+    margin-right: 2rem;
+  }
+  &__info-column:nth-of-type(2){
+    margin: 0 4.5rem;
+  }
+  &__info-column:last-of-type{
+    margin-left: 5rem;
+  }
+  &__punkt{
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  &__punkt:nth-of-type(2){
+    margin: 1.25rem 0;
+  }
+  &__contacts{
+    font-family: "Natural Mono Alt", sans-serif;
+    width: 13.75rem;
+  }
+  &__mail{
+    text-decoration: underline;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  &__adress{
+    font-size: 0.875rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.2rem;
+  }
+  &__phone{
+    font-size: 0.875rem;
+  }
+  &__rights{
+    font-family: "Natural Mono Alt", sans-serif;
+    padding-top: 2.5rem;
+    padding-left: 19rem;
+    width: 72.5rem;
+    font-size: 0.875rem;
+  }
+  &__border{
+    display: flex;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+  }
+  &__bkg{
+    display: block;
+    width: 100%; 
+    height: 100%;
+    margin: 0; 
+    padding: 0;
+  }
+  &__border-mob{
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 21.875rem;
+  }
+  &__bkg-mob{
+    display: block;
+    width: 100%; 
+    height: 100%;
+    margin: 0; 
+    padding: 0;
+  }
+}
+.parts{
+  display: flex;
+  justify-content: space-between;
+}
+.column-part{
+  padding: 0 2.5rem;
+}
+.footerbtn{
+  margin-right: 1rem;
+}
+
+//Подвал-мобилка
+@media (max-width: 391px){
+  .footer{
+    margin: 1rem;
+    margin-bottom: 5rem;
+    overflow: hidden;
+    &__info{
+      flex: 1 1 auto;
+      width: 21.875rem;
+      display: flex;
+      padding: 1rem 1.25rem;
+      flex-direction: column;
+    }
+    &__info-column{
+      flex: 1 0 auto;
+      margin-bottom: 0;
+    }
+    &__info-column:nth-of-type(2){
+      margin: 2.5rem 0;
+    }
+    &__info-column:nth-of-type(3){
+      flex: 1 0 auto;
+      margin-bottom: 1.5rem;
+    }
+    &__info-column:last-of-type{
+      margin: 0;
+    }
+    &__mail{
+      font-size: 1rem;
+      margin-bottom: 0.625rem;
+    }
+    &__adress{
+      margin-bottom: 0.625rem;
+      line-height: 1rem;
+    }
+    &__rights{
+      padding: 0 1rem;
+      padding-top: 1.5rem;
+      width: 100%;
+    }
+    &__border{
+      display: none;
+    }
+    &__border-mob{
+      display: flex;
+    }
+  }
+  .footerbtn{
+    background-color: #1F1A17 !important;
+  }
+  .parts{
+    display: flex;
+    justify-content: start;
+  }
+  .column-part{
+    padding: 0;
+  }
+  .column-part:last-of-type{
+    padding-left: 2.5rem;
+  }
+  .brand-footer{
+    width: 2.625rem;
+    height: 3.75rem;
+  }
+  svg.footer__bkg{
+    height: 411px;
+    width: 350px;
+  }
+}
+
+//Кнопка
+.mainbutton{
+  &__btnparts{
+    height: 3.75rem;
+    width: 12.5rem;
+    display: flex;
+    position: relative;
+    z-index: 2;
+  }
+  &__buttonpart{
+    width: 1.25rem;
+    height: 1.25rem;
+    background: #50E4DB;
+    padding-right: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    &:hover{
+      background: #00549F;
+    }
+  }
+  &__button{
+    height: 2.5rem;
+    width: 11.25rem;
+    background: linear-gradient(90deg, #50E4DB 0%, #00549F 100%);
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &:hover{
+      background: linear-gradient(90deg, #00549F 0%, #50E4DB 100%);
+    }
+  }
+}
+
+.mainbutton__buttonpart:hover + .mainbutton__button{
+  background: linear-gradient(90deg, #00549F 0%, #50E4DB 100%);
+}
+
+.hover-btn{
+  background: #00549F;
+}
+
+
+@media (max-width: 391px){
+  .mainbutton{
+    &__btnparts{
+      width: auto;
+    }
+    &__button{
+      position: absolute;
+      right: 0;
+      width: calc(18.875rem - 1.25rem);
+    }
+  }
+}
+
+//МЕСТО
+.place{
+  width: 72.5rem;
+  margin: 0 auto;
+  flex: 0 1 auto;
+  position: relative;
+  &__maininfo{
+    display: flex;
+    padding: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+  &__info{
+    padding-bottom: 5rem;
+    padding-top: 3rem;
+  }
+  &__subinfo{
+    padding: 2.5rem 0;
+    display: flex;
+    line-height: 1.1rem;
+    font-family: "Natural Mono Alt", sans-serif;
+  }
+  &__secinfo{
+    font-family: "Natural Mono Alt", sans-serif;
+  }
+  &__punkt{
+    padding-right: 4rem;
+  }
+  &__border{
+    position: absolute;
+    top: -6rem;
+    z-index: 1;
+    width: 100%;
+  }
+  &__bkg{
+    display: block;
+    width: 100%;
+  }
+  &__slider{
+    padding-left: 7rem;
+  }
+  &__border-mob{
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 21.875rem;
+  }
+  &__bkg-mob{
+    display: block;
+    width: 100%; 
+    height: 100%;
+    margin: 0; 
+    padding: 0;
+  }
+  &__slider-mob{
+    display: none;
+  }
+}
+
+.subinfo-text{
+  width: 24rem;
+  padding: 0 1rem;
+}
+
+.skobka{
+  padding-top: 0.1rem;
+}
+
+.secinfo-ul{
+  display: flex;
+}
+
+//SLIDER
+.slider-container {
+  background-color: transparent;
+  position: relative;
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  bottom: -2rem;
+  right: -1rem;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+}
+
+.prev-button {
+  right: 2rem;
+}
+
+//PLACE_MOB
+@media (max-width: 391px){
+  .place{
+    width: 21.875rem;
+    &__maininfo{
+      padding: 3.5rem 1.5rem 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    &__info{
+      padding-bottom: 0.5rem;
+      padding-top: 3.5rem;
+    }
+    &__namepic{
+      width: 19.375rem;
+    }
+    &__subinfo{
+      align-items: center;
+      padding: 1.25rem 0;
+    }
+    &__secinfo{
+      margin-top: -2.5rem;
+    }
+    &__secinfo ul{
+      flex-direction: column;
+    }
+    &__punkt{
+      padding: 0.5rem 0;
+      display: flex;
+    }
+    &__punkt:first-of-type{
+      width: 60%;
+    }
+    &__border{
+      display: none;
+    }
+    &__slider{
+      padding-left: 0;
+    }
+    &__border-mob{
+      display: flex;
+    }
+    &__slider-mob{
+      display: block;
+    }
+  }
+
+  .slider{
+    display: none;
+  }
+
+  .punkt-dot{
+    margin-right: 1rem;
+    width: 1rem;
+  }
+  .slider-container button{
+    display: none;
+  }
+  .subinfo-text{
+    width: 24rem;
+    padding: 0 1rem;
+  }
+}
+
+//Options
+.options{
+  display: flex;
+  width: 72.5rem;
+  height: 14.2rem;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  margin: 5rem auto;
+  font-size: 1.5rem;
+  overflow: hidden;
+  &__punkt{
+    position: relative;
+    width: 24rem;
+  }
+  &__icon{
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1rem;
+    margin: 2rem 3rem 1.7rem 2rem;
+  }
+  &__icon-third{
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1rem;
+    margin: 2rem 2rem 1.7rem 17rem;
+  }
+  &__text{
+    position: relative;
+    z-index: 2;
+    padding-left: 2rem;
+    width: 45%;
+  }
+  &__text-third{
+    position: relative;
+    z-index: 2;
+    padding-left: 3.5rem;
+    width: 65%;
+  }
+  &__punkt:first-of-type{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../../recources/mainpage/1block.svg');
+    &:hover{
+      background-image: url('../../recources/mainpage/1blockhover.svg');
+    }
+  }
+  &__punkt:nth-of-type(2){
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../../recources/mainpage/2block.svg');
+    &:hover{
+      background-image: url('../../recources/mainpage/2blockhover.svg');
+    }
+  }
+  &__punkt:last-of-type{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    background-image: url('../../recources/mainpage/3block.svg');
+    &:hover{
+      background-image: url('../../recources/mainpage/3blockh.svg');
+    }
+  }
+  &__btn{
+    position: absolute;
+    z-index: 2;
+    bottom: 2.5rem;
+    right: 7rem;
+  }
+  &__btn-second{
+    position: absolute;
+    z-index: 2;
+    top: 1.7rem;
+    right: 3rem;
+  }
+  &__btn-third{
+    position: absolute;
+    z-index: 2;
+    bottom: 2.5rem;
+    right: 3rem;
+  }
+}
+
+//OPTIONS-MOB
+@media (max-width: 391px){
+  .options{
+    display: flex;
+    width: 21.875rem;
+    height: fit-content;
+    margin: 1rem auto;
+    flex-direction: column;
+    align-items: start;
+    &__punkt{
+      position: relative;
+      width: 21.875rem;
+      height: 12.875rem;
+    }
+    &__punkt:first-of-type{
+      background-image: url('../../recources/mainpage/1block-mob.svg');
+      &:hover{
+        background-image: url('../../recources/mainpage/1block-mob-hover.svg');
+      }
+    }
+    &__punkt:nth-of-type(2){
+      margin: 1rem 0;
+      background-image: url('../../recources/mainpage/2block-mob.svg');
+      &:hover{
+        background-image: url('../../recources/mainpage/2block-mob-hover.svg');
+      }
+    }
+    &__punkt:last-of-type{
+      background-image: url('../../recources/mainpage/3block-mob.svg');
+      &:hover{
+        background-image: url('../../recources/mainpage/3block-mob-hover.svg');
+      }
+    }
+    &__icon{
+      margin: 2rem 3rem 0.5rem 2rem;
+    }
+    &__icon-third{
+      margin: 2rem 2rem 0.3rem 16rem;
+    }
+    &__text-third{
+      padding-left: 2.5rem;
+      width: 75%;
+    }
+    &__btn{
+      position: absolute;
+      z-index: 2;
+      bottom: 1.25rem;
+      right: 1.5rem;
+    }
+    &__btn-second{
+      position: absolute;
+      z-index: 2;
+      top: 1.25rem;
+      right: 1.5rem;
+    }
+    &__btn-third{
+      position: absolute;
+      z-index: 2;
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+}
+
+.about{
+  width: 72.5rem;
+  margin: 5rem auto;
+  &__title{
+    font-size: 3.75rem;
+    font-weight: 700;
+    text-transform: uppercase;color: #FFFFFF;
+  }
+  &__video{
+    margin: 2rem 0;
+    position: relative;
+  }
+  &__info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-left: 13rem;
+    position: relative;
+    height: 250px;
+  }
+  &__col{
+    position: relative;
+    z-index: 2;
+  }
+  &__num{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00549F;
+    margin-bottom: 1rem;
+  }
+  &__subinfo{
+    font-size: 1.5rem;
+    width: 65%;
+    color: #FFFFFF;
+  }
+  &__photo{
+    position: relative;
+    z-index: 2;
+    margin-top: 1rem;
+  }
+  &__border{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  &__bkg{
+    display: block;
+    width: 100%;
+  }
+  &__bkg-mob{
+    display: none;
+  }
+  &__photo-mob{
+    display: none;
+  }
+}
+
+.playbtn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+//ABOUT-MOB
+@media (max-width: 391px){
+  .about{
+    width: 21.875rem;
+    height: fit-content;
+    margin: 4rem auto;
+    &__title{
+      font-size: 2rem;
+    }
+    &__video{
+      height: 10.625rem;
+      margin: 1.25rem 0;
+      flex: 1 1 auto;
+      position: relative;
+    }
+    &__video img:first-of-type{
+      width: 21.875rem;
+    }
+    &__info{
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+      padding: 1rem;
+      position: relative;
+      height: fit-content;
+      flex: 1 1 auto;
+    }
+    &__col{
+      position: relative;
+      z-index: 2;
+    }
+    &__col:nth-of-type(2){
+      margin: 1rem 0;
+      position: relative;
+      z-index: 2;
+      left: 12rem;
+    }
+    &__num{
+      font-size: 1.5rem;
+      margin-bottom: 0.625rem;
+    }
+    &__subinfo{
+      font-size: 0.875rem;
+    }
+    &__photo{
+      position: relative;
+      z-index: 2;
+      margin-top: 1rem;
+    }
+    &__border{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    &__bkg{
+      display: none;
+    }
+    &__bkg-mob{
+      display: block;
+    }
+    &__photo-desk{
+      display: none;
+    }
+    &__photo-mob{
+      display: block;
+    }
+  }
+  .playbtn{
+    position: absolute;
+    top: 45%;
+    left: 48%;
+  }
+}
+
+//Преимущества
+.advantages{
+  width: 72.5rem;
+  margin: 5rem auto;
+  &__title{
+    font-size: 3.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+  }
+  &__list{
+    display: flex;
+    height: 16.875rem;
+  }
+  &__svg-mob{
+    display: none;
+  }
+}
+
+.svg-container { 
+  display: inline-block;
+  position: relative;
+  width: 72.5rem;
+  height: 16.875rem;
+  overflow: hidden; 
+  background: #1F1A17;
+}
+
+.svg-content { 
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: content-box;
+}
+
+//ADVANT_MOB
+@media (max-width: 391px){
+  .advantages{
+    width: 21.875rem;
+    height: fit-content;
+    margin: 1rem auto;
+    &__title{
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+    &__list{
+      display: flex;
+      flex: 1 1 auto;
+      height: fit-content;
+    }
+    &__svg-desk{
+      display: none;
+    }
+    &__svg-mob{
+      display: block;
+      width: 100%;
+    }
+  }
+  .svg-container{ 
+    height: fit-content;
+  }
+}
+
+.partners{
+  margin: 5rem auto;
+  width: 100%;
+  &__title{
+    margin: 1rem auto;
+    width: 72.5rem;
+    font-size: 3.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+  }
+  &__list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem auto 6rem;
+    max-width: 112.5rem;
+  }
+  &__name{
+    height: 10rem;
+    width: 18.75rem;
+    border-left: 4px solid;
+    border-image-source: linear-gradient(180deg, #00549F 0%,  #50E4DB 100%);
+    border-image-slice: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  &__name:nth-child(6){
+    border-right: 4px solid;
+  }
+}
+
+img.img-partner{
+  margin: 0 auto;
+}
+
+.with-border::before{
+  content: '';
+  position: absolute; 
+  background: linear-gradient(90deg, #50E4DB 0%,   #00549F 100%);
+  right: 0rem; 
+  bottom: 0; 
+  width: 80%;
+  height: 4px; 
+}
+.with-border::after{
+  content: '';
+  position: absolute; 
+  background: linear-gradient(90deg, #50E4DB 0%,   #00549F 100%);
+  left: -0.2rem; 
+  top: 0; 
+  width: 80%;
+  height: 4px; 
+}
+
+//PARTNERS-MOB
+@media (max-width: 391px){
+  .partners{
+    margin: 4rem auto;
+    width: 21.875rem;
+    height: fit-content;
+    &__title{
+      margin-bottom: 1.25rem;
+      font-size: 2rem;
+    }
+    &__list{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1.25 auto;
+    }
+    &__name{
+      height: 6.25rem;
+      width: 10.3rem;
+    }
+    &__name:nth-child(2){
+      border-right: 4px solid;
+    }
+  }
+  .desktop-partner{
+    display: none;
+  }
+  .img-partner{
+    width: 9rem;
+  }
+}
+
+.memberform{
+  width: 72.5rem;
+  margin: 5rem auto 10rem;
+  flex: 1 1 auto;
+  height: 37.5rem;
+  position: relative;
+  &__content{
+    position: relative;
+  }
+  &__title{
+    margin-bottom: 7rem;
+  }
+  &__subtitle{
+    display: inline-flex;
+    line-height: 1.1rem;
+    font-family: "Natural Mono Alt", sans-serif;
+    align-items: center;
+    width: fit-content;
+    background-color: #FFFFFF;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: #00549F;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+  }
+  &__form{
+    width: 100%;
+    background-color: #00549F;
+    border-radius: 0.5rem;
+    margin-top: 16rem;
+    position: relative;
+    z-index: 3;
+    color: #FFFFFF;
+  }
+  &__bkg{
+    position: absolute;
+    top: 2rem;
+    left: 20rem;
+  }
+}
+
+.form-member{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.member-input{
+  background-color: transparent;
+  border-bottom: 1px solid #FFFFFF;
+  &:focus{
+    color: #FFFFFF;
+  }
+}
+
+label{
+  font-size: 0.8rem;
+  padding-bottom: 0.7rem;
+}
+
+.first-svg{
+  position: relative;
+  z-index: -1;
+}
+
+.second-svg{
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: -2;
+}
+
+.image-plane{
+  position: absolute;
+  top: -0.43rem;
+  right: 7.7rem;
+  z-index: 2;
+}
+
+
+//MEMBERFORM-MOB
+@media (max-width: 391px){
+  .memberform{
+    margin: 1rem auto 5rem;
+    flex: 1 1 auto;
+    width: 22rem;
+    height: fit-content;
+    position: relative;
+    &__content{
+    }
+    &__title{
+      margin-bottom: 0;
+      position: relative;
+      z-index: 3;
+    }
+    &__title img{
+      width: 18rem;
+    }
+    &__subtitle{
+      line-height: 0.875rem;
+      width:100%;
+      margin-top: 10rem;
+    }
+    &__form{
+      width: 100%;
+      height: fit-content;
+      margin-top: 20rem;
+    }
+    &__bkg{
+      position: absolute;
+      top: -3.5rem;
+      left: 0;
+    }
+    &__btn{
+      width: 18.9rem;
+      margin: 1rem auto;
+    }
+  }
+  
+  .form-member{
+    width: 100%;
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+  
+  .member-input{
+    width: 100%;
+    padding: 1rem auto;
+  }
+  
+  label{
+    font-size: 0.8rem;
+    padding-bottom: 0.7rem;
+    margin: 0 0.5rem;
+    width: 90%;
+  }
+  
+  .first-svg{
+    position: relative;
+    z-index: -1;
+    width: 21.875rem;
+  }
+  
+  .second-svg{
+    position: absolute;
+    top: 2rem;
+    left: 1.5rem;
+    width: 19.5rem;
+    z-index: -2;
+  }
+  
+  .image-plane{
+    position: absolute;
+    top: 6.31rem;
+    right: 4.4rem;
+    z-index: 2;
+    width: 21rem;
+  }
+}
